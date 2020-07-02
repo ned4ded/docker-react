@@ -12,3 +12,4 @@ FROM nginx:alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 
+CMD /bin/bash -c "envsubst '\$PORT' < ./etc/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
