@@ -1,5 +1,4 @@
 language: generic 
-sudo: required
 services:
     - docker
 before_install:
@@ -8,6 +7,6 @@ script:
     - docker run -e CI=true docker-test npm run test -- --coverage
 deploy:
     provider: heroku
-    api_key: HEROKU_AUTH_TOKEN
+    api_key: $HEROKU_AUTH_TOKEN
     app: 
         master: n4d-docker-test
